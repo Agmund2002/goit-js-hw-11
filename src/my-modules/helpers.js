@@ -7,7 +7,7 @@ const defaults = {
 
 function createMarkup(arr) {
     const elem = arr.map(({ webformatURL, largeImageURL, tags, likes, views, comments, downloads }) => `
-    <div class="photo-card">
+    <div class="photo-card js-photo-card">
       <a class="img-tumb" href="${largeImageURL || defaults.url}">
         <img class="img" src="${webformatURL || defaults.url}" alt="${tags || defaults.text}" loading="lazy" />
       </a>
@@ -34,4 +34,24 @@ function createMarkup(arr) {
     elements.box.insertAdjacentHTML('beforeend', elem);
 }
 
-export { createMarkup };
+function handlerLight() {
+  elements.darkThemBtn.classList.remove('visually-hidden');
+  elements.lightThemBtn.classList.add('visually-hidden');
+
+  elements.html.classList.remove('dark');
+  
+  localStorage.removeItem('them');
+}
+
+function handlerDark() {
+  elements.lightThemBtn.classList.remove('visually-hidden');
+  elements.darkThemBtn.classList.add('visually-hidden');
+
+  elements.html.classList.add('dark');
+
+  if (localStorage.getItem('them') !== 'dark') {
+    localStorage.setItem('them', 'dark')
+  }
+}
+
+export { createMarkup, handlerLight, handlerDark };

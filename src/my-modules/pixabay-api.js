@@ -11,7 +11,7 @@ async function serviceImgs(keyword, currentPage = '1') {
         q: keyword,
         image_type: 'photo',
         orientation: 'horizontal',
-        safesearch: true,
+        safesearch: 'true',
         per_page: perPage,
         page: currentPage
     });

@@ -1,5 +1,3 @@
-// плавний скрол => зафіксувати висоту картинки
-// *окрема реалізація з кнопкою
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
@@ -8,21 +6,27 @@ import "simplelightbox/dist/simple-lightbox.min.css";
 
 
 import { elements } from "./my-modules/elements";
-import { createMarkup } from "./my-modules/helpers";
+import { createMarkup, handlerLight, handlerDark } from "./my-modules/helpers";
 import { serviceImgs, perPage } from "./my-modules/pixabay-api";
+
+if (localStorage.getItem('them') === 'dark') {
+    handlerDark();
+}
 
 let currentPage = null;
 let currentValue = null;
 const gallery = new SimpleLightbox('.gallery a');
 
 elements.form.addEventListener('submit', handlerForm);
+elements.lightThemBtn.addEventListener('click', handlerLight);
+elements.darkThemBtn.addEventListener('click', handlerDark);
 
 const warning = new IntersectionObserver(lastElement, { rootMargin: '10px' });
-const infinityScroll = new IntersectionObserver(handlerScroll, { rootMargin: '500px' });
+const infiniteScroll = new IntersectionObserver(handlerScroll, { rootMargin: '500px' });
 
 function handlerForm(evt) {
     evt.preventDefault();
-    elements.guard.classList.add('guard-hidden');
+    elements.guard.classList.add('hidden');
     elements.box.innerHTML = '';
     currentValue = null;
     currentPage = 1;
@@ -45,9 +49,9 @@ function handlerForm(evt) {
             createMarkup(hits);
             gallery.refresh();
 
-            elements.guard.classList.remove('guard-hidden');
+            elements.guard.classList.remove('hidden');
             if (currentPage < totalHits / perPage) {
-                infinityScroll.observe(elements.guard);
+                infiniteScroll.observe(elements.guard);
             } else {
                 warning.observe(elements.guard);
             }
@@ -67,7 +71,7 @@ function handlerScroll(entries) {
 
                     if (currentPage > totalHits / perPage) {
                         warning.observe(elements.guard);
-                        infinityScroll.unobserve(elements.guard);
+                        infiniteScroll.unobserve(elements.guard);
                     }
                 })
                 .catch(err => Notify.failure(err.message))
@@ -84,3 +88,4 @@ function lastElement(entries) {
         }
     })
 }
+
