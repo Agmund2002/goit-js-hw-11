@@ -8,8 +8,8 @@
  </head>
  <body>
   <form class="search-form" id="search-form">
-    <input type="text" name="searchQuery" autocomplete="off" placeholder="Search images..." />
-    <button type="submit">
+    <input class="search-input" type="text" name="searchQuery" autocomplete="off" placeholder="Search images..." />
+    <button class="search-btn" type="submit">
       <svg class="search-icon" width="15" height="15">
         <use href="./slyles/icon/search.svg#icon"></use>
       </svg>
@@ -17,7 +17,7 @@
   </form>
 
   <div class="gallery js-gallery"></div>
-  <div class="js-guard"></div>
+  <div class="guard-hidden js-guard"></div>
 
   <script src="./index.js" type="module"></script>
  </body>

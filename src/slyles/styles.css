@@ -1,0 +1,55 @@
+/* Base normalize */
+p,
+ul,
+button {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    display: block;
+}
+
+/* Helpers */
+.guard-hidden {
+    display: none;
+}
+
+/* Grid */
+.gallery {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.photo-card {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+}
+
+.img-tumb {
+    display: block;
+
+    width: 350px;
+    height: 220px;
+}
+
+.img {
+    height: 100%;
+    width: 100%;
+    
+    object-fit: cover;
+}
+
+.info-list {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}

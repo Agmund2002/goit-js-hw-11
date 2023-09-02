@@ -1,4 +1,5 @@
 import axios from "axios";
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
 const API_KEY = '39114416-f90b644e8d0401ad57694968b';
 const BASE_URL = 'https://pixabay.com/api/';
@@ -14,6 +15,8 @@ async function serviceImgs(keyword, currentPage = '1') {
         per_page: perPage,
         page: currentPage
     });
+
+    Loading.hourglass("Please wait...");
 
     return await axios.get(`${BASE_URL}?${params}`);
 }
