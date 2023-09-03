@@ -1,15 +1,27 @@
-import { elements } from "./elements";
+import { elements } from './elements';
 
 const defaults = {
-    url: 'https://netsh.pp.ua/wp-content/uploads/2017/08/Placeholder-1.png',
-    text: 'Not Found'
+  url: 'https://netsh.pp.ua/wp-content/uploads/2017/08/Placeholder-1.png',
+  text: 'Not Found',
 };
 
 function createMarkup(arr) {
-    const elem = arr.map(({ webformatURL, largeImageURL, tags, likes, views, comments, downloads }) => `
+  const elem = arr
+    .map(
+      ({
+        webformatURL,
+        largeImageURL,
+        tags,
+        likes,
+        views,
+        comments,
+        downloads,
+      }) => `
     <div class="photo-card js-photo-card">
       <a class="img-tumb" href="${largeImageURL || defaults.url}">
-        <img class="img" src="${webformatURL || defaults.url}" alt="${tags || defaults.text}" loading="lazy" />
+        <img class="img" src="${webformatURL || defaults.url}" alt="${
+        tags || defaults.text
+      }" loading="lazy" />
       </a>
       <ul class="info-list">
         <li class="info-item">
@@ -29,9 +41,11 @@ function createMarkup(arr) {
           <p class="info">${downloads || defaults.text}</p>
         </li>
         </ul>
-    </div>`).join('');
+    </div>`
+    )
+    .join('');
 
-    elements.box.insertAdjacentHTML('beforeend', elem);
+  elements.box.insertAdjacentHTML('beforeend', elem);
 }
 
 function handlerLight() {
@@ -39,7 +53,7 @@ function handlerLight() {
   elements.lightThemBtn.classList.add('visually-hidden');
 
   elements.html.classList.remove('dark');
-  
+
   localStorage.removeItem('them');
 }
 
@@ -50,7 +64,7 @@ function handlerDark() {
   elements.html.classList.add('dark');
 
   if (localStorage.getItem('them') !== 'dark') {
-    localStorage.setItem('them', 'dark')
+    localStorage.setItem('them', 'dark');
   }
 }
 

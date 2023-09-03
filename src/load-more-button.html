@@ -1,42 +1,65 @@
 <!DOCTYPE html>
 <html lang="en" class="js-html">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
     <!-- Font -->
-    <link rel="stylesheet" href="./slyles/styles.css">
+    <link rel="stylesheet" href="./slyles/styles.css" />
     <title>Load more button realization</title>
-</head>
+  </head>
 
-<body>
-    <button class="btn visually-hidden them-btn light-them js-light-them" type="button">
-        <svg class="light-icon" width="20" height="20" fill="black">
-            <use href="./slyles/icon/symbol-defs.svg#sun"></use>
-        </svg>
+  <body>
+    <a class="interactive-elem return-link js-return-link" href="./index.html">
+      <svg class="return-icon" width="20" height="20" fill="white">
+        <use href="./slyles/icon/symbol-defs.svg#arrow-left2"></use>
+      </svg>
+    </a>
+    <button
+      class="interactive-elem visually-hidden them-btn light-them js-light-them"
+      type="button"
+    >
+      <svg class="light-icon" width="20" height="20" fill="black">
+        <use href="./slyles/icon/symbol-defs.svg#sun"></use>
+      </svg>
     </button>
-    <button class="btn them-btn dark-them js-dark-them" type="button">
-        <svg class="dark-icon" width="20" height="20" fill="white">
-            <use href="./slyles/icon/symbol-defs.svg#brightness-contrast"></use>
-        </svg>
+    <button
+      class="interactive-elem them-btn dark-them js-dark-them"
+      type="button"
+    >
+      <svg class="dark-icon" width="20" height="20" fill="white">
+        <use href="./slyles/icon/symbol-defs.svg#brightness-contrast"></use>
+      </svg>
     </button>
     <form class="search-form" id="search-form">
-        <input class="search-input" type="text" name="searchQuery" autocomplete="off" placeholder="Search images..." />
-        <button class="btn search-btn" type="submit">
-            <svg class="search-icon" width="15" height="15">
-                <use href="./slyles/icon/symbol-defs.svg#search"></use>
-            </svg>
-        </button>
+      <input
+        class="search-input"
+        type="text"
+        name="searchQuery"
+        autocomplete="off"
+        placeholder="Search images..."
+      />
+      <button class="btn search-btn" type="submit">
+        <svg class="search-icon" width="15" height="15">
+          <use href="./slyles/icon/symbol-defs.svg#search"></use>
+        </svg>
+      </button>
     </form>
 
     <div class="gallery js-gallery"></div>
-    <div class="js-guard"></div>
+    <div class="btn-box">
+        <button class="visually-hidden load-more js-load-more" type="button">
+      Load more
+    </button>
+    </div>
+    <div class="visually-hidden js-guard"></div>
 
-    <script src="./index.js" type="module"></script>
-</body>
-
+    <script src="./js/load-more-button.js" type="module"></script>
+  </body>
 </html>
